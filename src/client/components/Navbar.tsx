@@ -1,9 +1,8 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-export interface NavBarProps { }
 
-const NavBar: React.SFC<NavBarProps> = () => {
+const NavBar: React.SFC<INavBarProps> = () => {
     return(
         <>
 <div className="logoBar row justify-content-md-center sticky-top">
@@ -17,6 +16,6 @@ const NavBar: React.SFC<NavBarProps> = () => {
             </div>
         </>
     )
-}
-
+};
+interface INavBarProps { };
 export default NavBar;
