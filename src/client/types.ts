@@ -1,5 +1,6 @@
 export interface chirp{
     id?:string,
-    user: string,
-    text: string
+    userid: string,
+    content: string,
+    name: string
 }

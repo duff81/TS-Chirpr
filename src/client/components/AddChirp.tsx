@@ -6,16 +6,16 @@ import { chirp } from "../types";
 
 const AddChirp: React.FC<IAddChirpProps>= (props: IAddChirpProps)=>{
   const [chirp,setChirp]=React.useState <chirp>({
-    user: "",
-    text: ""
+    userid: "",
+    content: ""
   });
   const userChange= (e: React.ChangeEvent<HTMLInputElement>) => setChirp({
-    user: e.target.value,
-    text: chirp.text
+    userid: e.target.value,
+    content: chirp.content
   });
   const textChange= (e: React.ChangeEvent<HTMLTextAreaElement>) =>setChirp({
-    user: chirp.user,
-    text: e.target.value
+    userid: chirp.userid,
+    content: e.target.value
   });
   const saveChirp = async ()=>{
     await fetch ("/api/chirps", {
@@ -35,7 +35,7 @@ const AddChirp: React.FC<IAddChirpProps>= (props: IAddChirpProps)=>{
                     <input type="text" className="card-title" defaultValue="" onChange={userChange}/>
                 </div>
                 <div className="row">
-                    <textarea className="card-text" defaultValue={chirp.text} cols={50} rows={15} onChange={textChange}></textarea>
+                    <textarea className="card-text" defaultValue={chirp.content} cols={50} rows={15} onChange={textChange}></textarea>
                 </div>
                 <button className="btn btn-sm btn-outline-dark float-right mx-1" onClick={saveChirp}>Save</button>
             </div>

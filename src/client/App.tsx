@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Switch, Route, match } from "react-router-dom";
 
+
 import AllChirps from "./components/AllChirps";
 import NavBar from "./components/Navbar";
 import AddChirp from "./components/AddChirp";
@@ -10,7 +11,7 @@ import "./scss/app";
 
 
 
-const App: React.SFC<IAppProps> = () => {
+const App: React.FC<IAppProps> = () => {
   return (
     <Router>
       <main className="container-fluid">
