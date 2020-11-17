@@ -1,16 +1,8 @@
 import { Query } from "./index";
-import DB from "../db"
-const allUsers = async () => Query("SELECT * FROM users");
-console.log(allUsers)
 
-// post - insert into chirps...
-
-// put - update chirps...
-
-// delete - delete from chirps
+const insertChirp =async(id: number) => Query ("SELECT chirps.id, chirps.content, users.name FROM chirps JOIN users on chirps.userid=users.id WHERE chirps.id=?;",[id])
 
 
 export default {
-    allUsers
-    
+    insertChirp   
 }

@@ -1,23 +1,20 @@
-import * as express from "express";
 import { Query } from "./index";
 
 
-const allChirps = async () => Query("SELECT chirps.content, chirps.id, users.name FROM chirps join users on users.id = chirps.userid;");
-const oneChirp= async (id: number)=>Query("select Chirps.*, users.name from chirps join users on users.id = chirps.userid where chirps.id = ?", [id])
-const editChirp= async (content: string, id: number)=> Query("update Chirps set content = ? where id =?;",[content,id])
-// const postChirp=
-// const deleteChirp=
+const allChirps = async () => Query("SELECT chirps.content, chirps.id, users.name FROM chirps JOIN users on users.id = chirps.userid;");
 
+const oneChirp= async (id: number)=>Query("SELECT chirps.*, users.name FROM chirps JOIN users on users.id = chirps.userid WHERE chirps.id = ?", [id])
 
-// post - insert into chirps...
+const insertChirp = (userid: number, content: string) => Query("INSERT INTO chirps (userid, content) VALUES (?, ?);", [userid, content]);
 
-// put - update chirps...
+const updateChirp = (content: string, id: number) => Query("UPDATE chirps SET content = ? WHERE chirps.id = ?", [content, id]);
 
-// delete - delete from chirps
-
+const deleteChirp = (id: number) => Query("DELETE FROM chirps WHERE chirps.id = ?;", [id]);
 
 export default {
     allChirps,
     oneChirp,
-    editChirp
+    insertChirp,
+    updateChirp,
+    deleteChirp
 }
